@@ -31,41 +31,34 @@
 
         
         
-        const yScale = d3.scaleLinear()
-           .domain([125, 0])
-           .range([0, 100]);
+        // const yScale = d3.scaleLinear()
+        //    .domain([125, 0])
+        //    .range([0, 100]);
         
-        var chart = d3.select("svg")
-                  .append("g")
-                    .attr("transform", "translate("+50+","+50+")");
+        // var chart = d3.select("svg")
+        //           .append("g")
+        //             .attr("transform", "translate("+50+","+50+")");
 
-        chart.append('g').call(d3.axisLeft(yScale));
+        // chart.append('g').call(d3.axisLeft(yScale));
 
-        const xScale = d3.scaleBand()
-            .range([0, 100])
-            .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
-            .padding(0.2);
+        // const xScale = d3.scaleBand()
+        //     .range([0, 100])
+        //     .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
+        //     .padding(0.2);
 
-        chart.append('g')
-            .attr('transform', `translate(0, 125)`)
-            .call(d3.axisBottom(xScale));
+        // chart.append('g')
+        //     .attr('transform', `translate(0, 125)`)
+        //     .call(d3.axisBottom(xScale));
 
-        chart.selectAll()
-            .data(electricVehicles)
-            .enter()
-            .append('rect')
-            .attr('x', function(d) { return xScale(d.Make); })
-            .attr('y', function(d) { return yScale(d.AverageHighwayMPG); })
-            .attr('height', function(d) { return 125 - yScale(d.AverageHighwayMPG); })
-            .attr('width', xScale.bandwidth())
+        // chart.selectAll()
+        //     .data(electricVehicles)
+        //     .enter()
+        //     .append('rect')
+        //     .attr('x', function(d) { return xScale(d.Make); })
+        //     .attr('y', function(d) { return yScale(d.AverageHighwayMPG); })
+        //     .attr('height', function(d) { return 125 - yScale(d.AverageHighwayMPG); })
+        //     .attr('width', xScale.bandwidth())
         
-        // g.selectAll("svg")
-        //  .data(electricVehicles)
-        //  .enter()
-        //  .append("circle")
-        //  .attr("cx", function(d, i) { return xScale(parseInt(d.AverageCityMPG, 10)); })
-        //  .attr("cy", function(d, i) { return yScale(parseInt(d.AverageHighwayMPG, 10))  })
-        //  .attr("r", function(d, i) { return 2 + parseInt(d.EngineCylinders, 10); }) 
         
         }
         
