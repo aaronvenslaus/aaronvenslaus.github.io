@@ -55,9 +55,6 @@
 
         chart.append('g').attr('transform', `translate(0, ${margin})`).call(d3.axisLeft(yScale));
 
-        // console.log(yScale(0))
-        // console.log(yScale(50))
-        // console.log(yScale(100))
         console.log(yScale(122))
         console.log(450 - yScale(122))
         console.log(xScale('BMW'))
@@ -71,6 +68,7 @@
             .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
             .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
             .attr('width', xScale.bandwidth())
+            .attr('fill', 'green')
         
         
         }
