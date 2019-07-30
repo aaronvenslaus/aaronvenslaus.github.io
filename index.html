@@ -65,7 +65,7 @@
             .enter()
             .append('rect')
             .attr('x', function(d) { return xScale(d.Make); })
-            .attr('y', function(d) { return yScale(d.AverageHighwayMPG); })
+            .attr('y', function(d) { return d.AverageHighwayMPG; })
             .attr('height', function(d) { return d.AverageHighwayMPG; }) // 125 - yScale(
             .attr('width', xScale.bandwidth())
         
