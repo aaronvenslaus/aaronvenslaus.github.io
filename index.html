@@ -40,31 +40,23 @@
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`);
 
-        
-
         const xScale = d3.scaleBand()
             .range([0, width])
             .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
             .padding(0.2);
 
+        chart.append('g')
+            .attr('transform', `translate(0, ${height})`)
+            .call(d3.axisBottom(xScale));
+
         const yScale = d3.scaleLinear()
            .domain([height, 0])
            .range([0, 125]);
 
-        const makeYLines = () => d3.axisLeft().scale(yScale)
-
         chart.append('g').call(d3.axisLeft(yScale));
 
-        chart.append('g')
-            .attr('class', 'grid')
-            .call(makeYLines()
-                .tickSize(-width, 0, 0)
-                .tickFormat('')
-            )
+        console.log(yScale(100))
 
-        chart.append('g')
-            .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(xScale));
 
         chart.selectAll()
             .data(electricVehicles)
@@ -72,7 +64,7 @@
             .append('rect')
             .attr('x', function(d) { return xScale(d.Make); })
             .attr('y', function(d) { return yScale(d.AverageHighwayMPG); })
-            .attr('height', function(d) { return 125 - yScale(d.AverageHighwayMPG); })
+            .attr('height', function(d) { return d.AverageHighwayMPG; }) // 125 - yScale(
             .attr('width', xScale.bandwidth())
         
         
