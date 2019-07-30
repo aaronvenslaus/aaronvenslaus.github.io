@@ -50,8 +50,8 @@
             .call(d3.axisBottom(xScale));
 
         const yScale = d3.scaleLinear()
-           .domain([500, 0])
-           .range([0, 125]);
+           .domain([0,500])
+           .range([125, 0]);
 
         chart.append('g').attr('transform', `translate(0, ${margin})`).call(d3.axisLeft(yScale));
 
