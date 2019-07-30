@@ -3,11 +3,9 @@
 
 <body onload='init()'>
 
-    <div id='layout'>
-            <!-- <h2>Bar chart example</h2> -->
-        <div id='container'>
-            <svg></svg>
-        </div>
+    
+        <svg width=1000 height=1000></svg>
+       
     </div>
 
 <script>
@@ -40,7 +38,7 @@
         
         
         const chart = svg.append('g')
-            .attr('transform', `translate(1000, 1000)`);
+            .attr('transform', `translate(${margin}, ${margin})`);
 
         
 
