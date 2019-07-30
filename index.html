@@ -59,7 +59,7 @@
         // console.log(yScale(50))
         // console.log(yScale(100))
         console.log(yScale(109))
-        console.log(500 - yScale(109))
+        console.log(450 - yScale(109))
         console.log(xScale('BMW'))
 
 
@@ -69,7 +69,7 @@
             .append('rect')
             .attr('x', function(d) { return xScale(d.Make); })
             .attr('y', function(d) { return yScale(d.AverageHighwayMPG); })
-            .attr('height', function(d) { return 500 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
+            .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
             .attr('width', xScale.bandwidth())
         
         
