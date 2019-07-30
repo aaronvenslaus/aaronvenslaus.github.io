@@ -49,10 +49,18 @@
 
         const yScale = d3.scaleLinear()
            .domain([height, 0])
-           .range([0, 100]);
+           .range([0, 125]);
+
+        const makeYLines = () => d3.axisLeft().scale(yScale)
+
+        chart.append('g').call(d3.axisLeft(yScale));
 
         chart.append('g')
-            .attr('transform', `translate(${width}, 0)`).call(d3.axisLeft(yScale));
+            .attr('class', 'grid')
+            .call(makeYLines()
+                .tickSize(-width, 0, 0)
+                .tickFormat('')
+            )
 
         chart.append('g')
             .attr('transform', `translate(0, ${height})`)
