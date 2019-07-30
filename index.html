@@ -50,7 +50,7 @@
             .call(d3.axisBottom(xScale));
 
         const yScale = d3.scaleLinear()
-           .domain([height, 0])
+           .domain([125, 0])
            .range([0, 125]);
 
         chart.append('g').call(d3.axisLeft(yScale));
