@@ -51,7 +51,8 @@
            .domain([height, 0])
            .range([0, 100]);
 
-        chart.append('g').call(d3.axisLeft(yScale));
+        chart.append('g')
+            .attr('transform', `translate(${width}, 0)`).call(d3.axisLeft(yScale));
 
         chart.append('g')
             .attr('transform', `translate(0, ${height})`)
