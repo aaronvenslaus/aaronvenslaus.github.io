@@ -4,7 +4,7 @@
 <body onload='init()'>
 
     
-        <svg width=900 height=900></svg>
+        <svg></svg>
        
     </div>
 
@@ -30,13 +30,13 @@
         console.log(electricVehicles);
 
         const svg = d3.select('svg');
-        const svgContainer = d3.select('#container');
 
-        const margin = 80;
-        const width = 1000 - 2 * margin;
-        const height = 600 - 2 * margin;
+        const margin = 50;
+        const width = 750;
+        const height = 500 ;
         
-        
+        d3.select("svg").attr("width", width + 2 * margin).attr("height", height + 2 * margin)
+
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`);
 
@@ -53,7 +53,7 @@
            .domain([125, 0])
            .range([0, 125]);
 
-        chart.append('g').call(d3.axisLeft(yScale));
+        chart.append('g').attr('transform', `translate(${margin}, ${margin})`).call(d3.axisLeft(yScale));
 
         console.log(yScale(100))
 
