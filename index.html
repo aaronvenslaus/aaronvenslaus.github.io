@@ -55,8 +55,10 @@
 
         chart.append('g').attr('transform', `translate(0, ${margin})`).call(d3.axisLeft(yScale));
 
+        console.log(yScale(0))
+        console.log(yScale(50))
         console.log(yScale(100))
-
+        console.log(yScale(125))
 
         chart.selectAll()
             .data(electricVehicles)
