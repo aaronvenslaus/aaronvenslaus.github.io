@@ -53,15 +53,43 @@ div.tooltip {
 
 <body onload='init()'>
 
-        <div class="pagination">
-            <a  class="active" href="#">Introduction</a>
-            <a href="electric.html">Electric</a>
-            <a href="diesel.html">Diesel</a>
-            <a href="gasoline.html">Gasoline</a>
+        <div>
+            <br>
+            <center><h1>Guide to buy a cra</h1></center>
         </div>
 
-        <div class = "row"></div>
-        <br/>
+        <div class="container sansserif">
+            <div class="pagination">
+                <a  class="active" href="#">Introduction</a>
+                <a href="electric.html">Electric</a>
+                <a href="diesel.html">Diesel</a>
+                <a href="gasoline.html">Gasoline</a>
+            </div>
+
+            <div class = "row"></div>
+            <br/>
+
+            <div class ="rows">
+                <div class = "col-sm-3 sansserif" style="background-color:#eee;">
+                </br>
+                <b><u>Electric Vehicles</u></b><br></br>
+                Mad rush for electric vehicles will blah blah<br>
+                <br></br>	
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br>
+                </div>
+                <div class = "col-sm-9 sansserif" style="background-color:white;" id="ratio">
+                    <center><u><b>MPG for electric cars</b></u></center>
+                <div id='tooltip' style='position:absolute;background-color:lightgray;padding:5px'></div>
+                </div>
+            </div>
+        </div>
+        
+
+        
         <br/>
 
         <div class = "row">
@@ -75,7 +103,7 @@ div.tooltip {
     
         <svg></svg>
        
-    </div>
+    
 
 <script>
     async function init() {
