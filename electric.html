@@ -237,7 +237,7 @@ div.tooltip {
         if(selectedMPG == "HighwayMPG" )
         {
             chart.selectAll().remove();
-
+            console.log("Removed chart elements");
             chart.selectAll()
                 .data(electricVehicles)
                 .enter()
@@ -256,7 +256,7 @@ div.tooltip {
         else
         {
             chart.selectAll().remove();
-            
+
             chart.selectAll()
                 .data(electricVehicles)
                 .enter()
