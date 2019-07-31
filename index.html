@@ -157,8 +157,8 @@ div.tooltip {
 
         var svg = d3.select('svg');
         var chart = d3.select('g');
-        chart.selectAll()
-            .data(electricVehicles);
+        // chart.selectAll()
+        //     .data(electricVehicles);
 
         const yScale = d3.scaleLinear()
            .domain([0,150])
@@ -172,9 +172,19 @@ div.tooltip {
         }
         else
         {
-            chart.transition()
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
+
+            chart.selectAll()
+                .data(electricVehicles)
+                .enter()
+                .append('rect')
+                .attr('x', function(d) { return xScale(d.Make); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
+                .attr('width', xScale.bandwidth())
+                .attr('fill', 'green')
+            // chart.transition()
+            //     .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+            //     .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
         }
 
         
