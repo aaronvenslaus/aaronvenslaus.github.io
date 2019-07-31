@@ -141,8 +141,7 @@ div.tooltip {
 
         chart.append('g')
             .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(xScale))
-            .text("Manufacturer");
+            .call(d3.axisBottom(xScale));
 
         const yScale = d3.scaleLinear()
            .domain([0,150])
@@ -150,8 +149,7 @@ div.tooltip {
 
         chart.append('g')
              .attr('transform', `translate(0, ${margin})`)
-             .call(d3.axisLeft(yScale))
-             .text("Miles per gallon");
+             .call(d3.axisLeft(yScale));
 
         console.log(yScale(122))
         console.log(450 - yScale(122))
