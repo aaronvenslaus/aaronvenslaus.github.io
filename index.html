@@ -36,13 +36,18 @@ div.tooltip {
 
 <body onload='init()'>
 
+        <form>
+            <input type="radio" name="MPG" id="HighwayMPG" value="HighwayMPG" checked> Average Highway MPG<br>
+            <input type="radio" name="MPG" id="CityMPG" value="CityMPG"> Average City MPG<br>
+            <input name="updateButton" type="button" value="Update" onclick="updateData()" />
+        </form>
     
         <svg></svg>
        
     </div>
 
 <script>
-        async function init() {
+    async function init() {
        
         var data = await d3.csv("https://flunky.github.io/cars2017.csv");
 
@@ -117,6 +122,40 @@ div.tooltip {
         
         
         }
+
+    // ** Update data section (Called from the onclick)
+    async function updateData() {
+
+        var data = await d3.csv("https://flunky.github.io/cars2017.csv");
+
+        console.log(data);
+
+        var electricVehicles = [];
+
+        for( let idx = 0; idx < data.length; idx++)
+        {
+            let obj = data[idx];
+
+            if(obj.Fuel == "Electricity")
+            {
+                electricVehicles.push(obj);
+            }
+        }
+
+        console.log(electricVehicles);
+
+        var selectedMPG;
+        if (document.getElementById('HighwayMPG').checked) {
+            selectedMPG = document.getElementById('HighwayMPG').value;
+        }
+
+        if (document.getElementById('CityMPG').checked) {
+            selectedMPG = document.getElementById('CityMPG').value;
+        }
+
+        console.log(selectedMPG);
+            
+    }
         
 </script>
 
