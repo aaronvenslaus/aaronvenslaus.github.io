@@ -236,6 +236,8 @@ div.tooltip {
 
         if(selectedMPG == "HighwayMPG" )
         {
+            chart.selectAll().remove();
+
             chart.selectAll()
                 .data(electricVehicles)
                 .enter()
@@ -253,6 +255,7 @@ div.tooltip {
         }
         else
         {
+            chart.selectAll().remove();
             
             chart.selectAll()
                 .data(electricVehicles)
