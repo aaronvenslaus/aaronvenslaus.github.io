@@ -257,7 +257,7 @@ div.tooltip {
                 .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
                 .attr('height', 0)
                 .attr('width', xScale.bandwidth())
-                .attr('fill', 'red')
+                .attr('fill', 'green')
                 .transition()
                 .duration(300)
                 .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
@@ -274,13 +274,11 @@ div.tooltip {
                 .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
                 .attr('height', 0)
                 .attr('width', xScale.bandwidth())
-                .attr('fill', 'blue')
+                .attr('fill', 'green')
                 .merge(chart)
                 .transition()
                 .duration(300)
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
-
-            
         }
 
         
