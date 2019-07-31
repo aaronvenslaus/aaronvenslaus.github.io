@@ -236,26 +236,25 @@ div.tooltip {
 
         if(selectedMPG == "HighwayMPG" )
         {
-            chart.selectAll().remove();
-            console.log("Removed chart elements");
-            // chart.selectAll()
-            //     .data(electricVehicles)
-            //     .enter()
-            //     .append('rect')
-            //     .attr('x', function(d) { return xScale(d.Make); })
-            //     .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-            //     .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
-            //     .attr('width', xScale.bandwidth())
-            //     .attr('fill', 'green');
-                // .transition()
-                // .ease("linear")
-                // .duration(3000)
-                // .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-                // .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+            chart.selectAll()
+                .data(electricVehicles)
+                .enter()
+                .append('rect')
+                .attr('x', function(d) { return xScale(d.Make); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .attr('width', xScale.bandwidth())
+                .attr('fill', 'green')
+                .merge(chart)
+                .transition()
+                .ease("linear")
+                .duration(3000)
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
         }
         else
         {
-            chart.selectAll().remove();
+            // chart.selectAll().remove();
 
             chart.selectAll()
                 .data(electricVehicles)
@@ -265,12 +264,13 @@ div.tooltip {
                 .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
                 .attr('width', xScale.bandwidth())
-                .attr('fill', 'green');
-                // .transition()
-                // .ease("linear")
-                // .duration(3000)
-                // .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                // .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) // 125 - yScale(
+                .attr('fill', 'green')
+                .merge(chart)
+                .transition()
+                .ease("linear")
+                .duration(3000)
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
             
         }
 
