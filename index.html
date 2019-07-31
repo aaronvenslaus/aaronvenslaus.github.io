@@ -193,20 +193,16 @@ div.tooltip {
                 .data(electricVehicles)
                 .enter()
                 .append('rect')
-                // .attr('x', function(d) { return xScale(d.Make); })
-                // .attr('y', 450)
-                // .attr('width', xScale.bandwidth())
-                // .attr('fill', 'green')
+                .attr('x', function(d) { return xScale(d.Make); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .attr('width', xScale.bandwidth())
+                .attr('fill', 'green')
                 // .merge(chart)
                 .transition()
                 .duration(1000)
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) // 125 - yScale(
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('x', function(d) { return xScale(d.Make); })
-                .attr('width', xScale.bandwidth())
-                .attr('fill', 'green')
-
-
+            
         }
 
         
