@@ -233,13 +233,6 @@ div.tooltip {
            .domain([0,150])
            .range([450, 0]);
 
-        chart.append('g')
-        .attr('transform', `translate(0, ${height})`)
-        .call(d3.axisBottom(xScale));
-
-        chart.append('g')
-             .attr('transform', `translate(0, ${margin})`)
-             .call(d3.axisLeft(yScale));
 
         if(selectedMPG == "HighwayMPG" )
         {
@@ -249,14 +242,14 @@ div.tooltip {
                 .append('rect')
                 .attr('x', function(d) { return xScale(d.Make); })
                 .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
-                .attr('width', xScale.bandwidth())
-                .attr('fill', 'green')
-                .transition()
-                .ease("linear")
-                .duration(3000)
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .attr('width', xScale.bandwidth())
+                .attr('fill', 'green');
+                // .transition()
+                // .ease("linear")
+                // .duration(3000)
+                // .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                // .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
         }
         else
         {
@@ -267,14 +260,14 @@ div.tooltip {
                 .append('rect')
                 .attr('x', function(d) { return xScale(d.Make); })
                 .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
                 .attr('width', xScale.bandwidth())
-                .attr('fill', 'green')
-                .transition()
-                .ease("linear")
-                .duration(3000)
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) // 125 - yScale(
+                .attr('fill', 'green');
+                // .transition()
+                // .ease("linear")
+                // .duration(3000)
+                // .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                // .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) // 125 - yScale(
             
         }
 
