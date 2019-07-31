@@ -86,9 +86,11 @@ div.tooltip {
         <br/>
 
         <div class = "col-sm-9 sansserif" style="background-color:white;" id="ratio">
-                <u><b>MPG for electric cars</b></u>        
+                <u>MPG for electric cars</u>        
         </div>
 
+        <br/>
+        <br/>
         <div class = "row">
             <form>
                 <input type="radio" name="MPG" id="HighwayMPG" value="HighwayMPG" checked> Average Highway MPG<br>
@@ -230,6 +232,14 @@ div.tooltip {
         const yScale = d3.scaleLinear()
            .domain([0,150])
            .range([450, 0]);
+
+        chart.append('g')
+        .attr('transform', `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale));
+
+        chart.append('g')
+             .attr('transform', `translate(0, ${margin})`)
+             .call(d3.axisLeft(yScale));
 
         if(selectedMPG == "HighwayMPG" )
         {
