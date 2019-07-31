@@ -238,15 +238,15 @@ div.tooltip {
         {
             chart.selectAll().remove();
             console.log("Removed chart elements");
-            chart.selectAll()
-                .data(electricVehicles)
-                .enter()
-                .append('rect')
-                .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
-                .attr('width', xScale.bandwidth())
-                .attr('fill', 'green');
+            // chart.selectAll()
+            //     .data(electricVehicles)
+            //     .enter()
+            //     .append('rect')
+            //     .attr('x', function(d) { return xScale(d.Make); })
+            //     .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+            //     .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+            //     .attr('width', xScale.bandwidth())
+            //     .attr('fill', 'green');
                 // .transition()
                 // .ease("linear")
                 // .duration(3000)
