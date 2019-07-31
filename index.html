@@ -200,6 +200,7 @@ div.tooltip {
                 .attr('fill', 'green')
                 // .merge(chart)
                 .transition()
+                .ease("linear")
                 .duration(1000)
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) // 125 - yScale(
             
