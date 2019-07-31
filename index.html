@@ -157,6 +157,8 @@ div.tooltip {
 
         var svg = d3.select('svg');
         var chart = d3.select('g');
+        chart.selectAll()
+            .data(electricVehicles);
 
         const yScale = d3.scaleLinear()
            .domain([0,150])
