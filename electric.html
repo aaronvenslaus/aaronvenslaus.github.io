@@ -254,7 +254,7 @@ div.tooltip {
                 .enter()
                 .append('rect')
                 .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
                 .attr('height', 0)
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
@@ -264,14 +264,12 @@ div.tooltip {
         }
         else
         {
-    
-
-            chart.selectAll()
+                chart.selectAll()
                 .data(electricVehicles)
                 .enter()
                 .append('rect')
                 .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
                 .attr('height', 0)
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
