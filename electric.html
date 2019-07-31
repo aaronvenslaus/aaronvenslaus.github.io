@@ -85,6 +85,9 @@ div.tooltip {
         </div>        
         <br/>
 
+        <div class = "col-sm-9 sansserif" style="background-color:white;" id="ratio">
+                <center><u><b>MPG for electric cars</b></u></center>        
+        </div>
 
         <div class = "row">
             <form>
@@ -96,9 +99,7 @@ div.tooltip {
 
         </div>
 
-        <div class = "col-sm-9 sansserif" style="background-color:white;" id="ratio">
-            <center><u><b>MPG for electric cars</b></u></center>        
-        </div>
+        
         <svg></svg>
 
 <script>
@@ -140,13 +141,17 @@ div.tooltip {
 
         chart.append('g')
             .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(xScale));
+            .call(d3.axisBottom(xScale))
+            .text("Manufacturer");
 
         const yScale = d3.scaleLinear()
            .domain([0,150])
            .range([450, 0]);
 
-        chart.append('g').attr('transform', `translate(0, ${margin})`).call(d3.axisLeft(yScale));
+        chart.append('g')
+             .attr('transform', `translate(0, ${margin})`)
+             .call(d3.axisLeft(yScale))
+             .text("Miles per gallon");
 
         console.log(yScale(122))
         console.log(450 - yScale(122))
