@@ -1,0 +1,277 @@
+<html>
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+
+<style> /* set the CSS */
+
+body { font: 12px Arial;}
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    /* width: 60px;					
+    height: 28px;					 */
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;
+    /* border: 0px;		
+    border-radius: 8px;			 */
+    pointer-events: none;			
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+</style>
+
+<body onload='init()'>
+
+        <div>
+            <br>
+            <center><h1>Guide to buy a cra</h1></center>
+        </div>
+
+        <div class="container sansserif">
+            <div class="pagination">
+                <a  class="active" href="#">Introduction</a>
+                <a href="electric.html">Electric</a>
+                <a href="diesel.html">Diesel</a>
+                <a href="gasoline.html">Gasoline</a>
+            </div>
+
+            <div class = "row"></div>
+            <br/>
+
+            <div class ="rows">
+                <div class = "col-sm-3 sansserif" style="background-color:#eee;">
+                </br>
+                <b><u>Electric Vehicles</u></b><br></br>
+                Mad rush for electric vehicles will blah blah<br>
+                <br></br>	
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br>
+                </div>
+                <div class = "col-sm-9 sansserif" style="background-color:white;" id="ratio">
+                    <center><u><b>MPG for electric cars</b></u></center>
+                <div id='tooltip' style='position:absolute;background-color:lightgray;padding:5px'></div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <br/>
+
+        <div class = "row">
+            <form>
+                <input type="radio" name="MPG" id="HighwayMPG" value="HighwayMPG" checked> Average Highway MPG<br>
+                <input type="radio" name="MPG" id="CityMPG" value="CityMPG"> Average City MPG<br>
+                <input name="updateButton" type="button" value="Update" onclick="updateData()" />
+            </form>
+
+            </div>
+    
+        <svg></svg>
+
+<script>
+    async function init() {
+       
+        var data = await d3.csv("https://flunky.github.io/cars2017.csv");
+
+        console.log(data);
+
+        var electricVehicles = [];
+
+        for( let idx = 0; idx < data.length; idx++)
+        {
+            let obj = data[idx];
+
+            if(obj.Fuel == "Electricity")
+            {
+                electricVehicles.push(obj);
+            }
+        }
+
+        console.log(electricVehicles);
+
+        const svg = d3.select('svg');
+
+        const margin = 50;
+        const width = 750;
+        const height = 500 ;
+        
+        d3.select("svg").attr("width", width + 2 * margin).attr("height", height + 2 * margin)
+
+        const chart = svg.append('g')
+            .attr('transform', `translate(${margin}, ${margin})`);
+
+        const xScale = d3.scaleBand()
+            .range([0, width])
+            .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
+            .padding(0.2);
+
+        chart.append('g')
+            .attr('transform', `translate(0, ${height})`)
+            .call(d3.axisBottom(xScale));
+
+        const yScale = d3.scaleLinear()
+           .domain([0,150])
+           .range([450, 0]);
+
+        chart.append('g').attr('transform', `translate(0, ${margin})`).call(d3.axisLeft(yScale));
+
+        console.log(yScale(122))
+        console.log(450 - yScale(122))
+        console.log(xScale('BMW'))
+
+        // Define the div for the tooltip
+        var div = d3.select("body").append("div")	
+            .attr("class", "tooltip")				
+            .style("opacity", 0);
+
+        chart.selectAll()
+            .data(electricVehicles)
+            .enter()
+            .append('rect')
+            .attr('x', function(d) { return xScale(d.Make); })
+            .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+            .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
+            .attr('width', xScale.bandwidth())
+            .attr('fill', 'green')
+            .on("mouseover", function(d) {		
+                div.transition()		
+                    .duration(200)		
+                    .style("opacity", .9);		
+                div.html(" Highway Mileage: " + d.AverageHighwayMPG + "<br/>")	
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px");	
+                })	
+        
+        
+        }
+
+    // ** Update data section (Called from the onclick)
+    async function updateData() {
+
+        var data = await d3.csv("https://flunky.github.io/cars2017.csv");
+
+        console.log(data);
+
+        var electricVehicles = [];
+
+        for( let idx = 0; idx < data.length; idx++)
+        {
+            let obj = data[idx];
+
+            if(obj.Fuel == "Electricity")
+            {
+                electricVehicles.push(obj);
+            }
+        }
+
+        console.log(electricVehicles);
+
+        var selectedMPG;
+        if (document.getElementById('HighwayMPG').checked) {
+            selectedMPG = document.getElementById('HighwayMPG').value;
+        }
+
+        if (document.getElementById('CityMPG').checked) {
+            selectedMPG = document.getElementById('CityMPG').value;
+        }
+
+        console.log(selectedMPG);
+
+        var svg = d3.select('svg');
+        var chart = d3.select('g');
+        // chart.selectAll()
+        //     .data(electricVehicles);
+
+        const margin = 50;
+        const width = 750;
+        const height = 500 ;
+
+        const xScale = d3.scaleBand()
+            .range([0, width])
+            .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
+            .padding(0.2);
+
+        const yScale = d3.scaleLinear()
+           .domain([0,150])
+           .range([450, 0]);
+
+        if(selectedMPG == "HighwayMPG" )
+        {
+            chart.selectAll()
+                .data(electricVehicles)
+                .enter()
+                .append('rect')
+                .attr('x', function(d) { return xScale(d.Make); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
+                .attr('width', xScale.bandwidth())
+                .attr('fill', 'green')
+                .transition()
+                .ease("linear")
+                .duration(3000)
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+        }
+        else
+        {
+            
+            chart.selectAll()
+                .data(electricVehicles)
+                .enter()
+                .append('rect')
+                .attr('x', function(d) { return xScale(d.Make); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .attr('width', xScale.bandwidth())
+                .attr('fill', 'green')
+                .transition()
+                .ease("linear")
+                .duration(3000)
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) // 125 - yScale(
+            
+        }
+
+        
+            
+    }
+        
+</script>
+
+</body>
+</html>
