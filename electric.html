@@ -254,12 +254,13 @@ div.tooltip {
                 .enter()
                 .append('rect')
                 .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
                 .transition()
                 .duration(300)
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
         }
         else
@@ -269,12 +270,13 @@ div.tooltip {
                 .enter()
                 .append('rect')
                 .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) 
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
                 .transition()
                 .duration(300)
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
         }
 
