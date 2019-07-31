@@ -154,6 +154,24 @@ div.tooltip {
         }
 
         console.log(selectedMPG);
+
+        var svg = d3.select('svg');
+        var chart = d3.select('g');
+
+        if(selectedMPG == "HighwayMPG" )
+        {
+            chart.transition()
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) 
+        }
+        else
+        {
+            chart.transition()
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
+        }
+
+        
             
     }
         
