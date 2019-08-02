@@ -262,6 +262,11 @@ div.tooltip {
              .attr('transform', `translate(0, ${margin})`)
              .call(d3.axisLeft(yScale));
 
+        // Define the div for the tooltip
+        var div = d3.select("#tooltip")	
+            .attr("class", "tooltip")				
+            .style("opacity", 0);
+
 
         if(selectedMPG == "HighwayMPG" )
         {
@@ -278,6 +283,14 @@ div.tooltip {
                 .duration(300)
                 .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .on("mouseover", function(d) {		
+                    div.transition()		
+                        .duration(200)		
+                        .style("opacity", .9);		
+                    div.html(" Highway Mileage: " + d.AverageHighwayMPG + "<br/>")	
+                        .style("left", (d3.event.pageX) + "px")		
+                        .style("top", (d3.event.pageY - 28) + "px");	
+                })
         }
         else
         {
@@ -294,6 +307,14 @@ div.tooltip {
                 .duration(300)
                 .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
+                .on("mouseover", function(d) {		
+                    div.transition()		
+                        .duration(200)		
+                        .style("opacity", .9);		
+                    div.html(" Highway Mileage: " + d.AverageCityMPG + "<br/>")	
+                        .style("left", (d3.event.pageX) + "px")		
+                        .style("top", (d3.event.pageY - 28) + "px");	
+                })
         }
 
         
