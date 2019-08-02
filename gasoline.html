@@ -113,7 +113,7 @@ div.tooltip {
         {
             let obj = data[idx];
 
-            if(obj.Fuel == "Electricity")
+            if(obj.Fuel == "Gasoline")
             {
                 electricVehicles.push(obj);
             }
@@ -151,7 +151,7 @@ div.tooltip {
 
         // y axis
         const yScale = d3.scaleLinear()
-           .domain([0,150])
+           .domain([0,45])
            .range([375, 0]);
 
         chart.append('g')
@@ -209,7 +209,7 @@ div.tooltip {
         {
             let obj = data[idx];
 
-            if(obj.Fuel == "Electricity")
+            if(obj.Fuel == "Gasoline")
             {
                 electricVehicles.push(obj);
             }
@@ -251,7 +251,7 @@ div.tooltip {
 
         // y axis
         const yScale = d3.scaleLinear()
-           .domain([0,150])
+           .domain([0,45])
            .range([375, 0]);
 
         chart.append('g')
