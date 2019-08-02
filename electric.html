@@ -279,10 +279,6 @@ div.tooltip {
                 .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
-                .transition()
-                .duration(300)
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
                 .on("mouseover", function(d) {		
                     div.transition()		
                         .duration(200)		
@@ -291,6 +287,10 @@ div.tooltip {
                         .style("left", (d3.event.pageX) + "px")		
                         .style("top", (d3.event.pageY - 28) + "px");	
                 })
+                .transition()
+                .duration(300)
+                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
         }
         else
         {
@@ -303,10 +303,6 @@ div.tooltip {
                 .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) 
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
-                .transition()
-                .duration(300)
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
                 .on("mouseover", function(d) {		
                     div.transition()		
                         .duration(200)		
@@ -315,6 +311,11 @@ div.tooltip {
                         .style("left", (d3.event.pageX) + "px")		
                         .style("top", (d3.event.pageY - 28) + "px");	
                 })
+                .transition()
+                .duration(300)
+                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
+                
         }
 
         
