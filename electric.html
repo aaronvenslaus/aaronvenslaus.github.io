@@ -139,10 +139,19 @@ div.tooltip {
             .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
             .padding(0.2);
 
+        // x- axis
         chart.append('g')
             .attr('transform', `translate(0, ${height})`)
             .call(d3.axisBottom(xScale));
 
+        svg.append("text")             
+            .attr("transform",
+                    "translate(" + (width/2) + " ," + 
+                                (height + margin + 40) + ")")
+            .style("text-anchor", "middle")
+            .text("Manufacturer");
+
+        // y axis
         const yScale = d3.scaleLinear()
            .domain([0,150])
            .range([450, 0]);
@@ -151,12 +160,13 @@ div.tooltip {
              .attr('transform', `translate(0, ${margin})`)
              .call(d3.axisLeft(yScale));
 
-        svg.append("text")             
-            .attr("transform",
-                    "translate(" + (width/2) + " ," + 
-                                (height + margin + 20) + ")")
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", 0 - (height / 2))
+            .attr("y", 0 - margin.left + 15)
+            .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Manufacture");
+            .text("Miles per gallon");
 
         console.log(yScale(122))
         console.log(450 - yScale(122))
