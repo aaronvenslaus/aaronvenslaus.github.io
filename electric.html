@@ -134,7 +134,7 @@ div.tooltip {
 
         // x- axis
         const xScale = d3.scaleBand()
-            .range([25, width])
+            .range([0, width])
             .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
             .padding(0.2);
 
@@ -179,7 +179,7 @@ div.tooltip {
             .data(electricVehicles)
             .enter()
             .append('rect')
-            .attr('x', function(d) { return xScale(d.Make); })
+            .attr('x', function(d) { return 25 + xScale(d.Make); })
             .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
             .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
             .attr('width', xScale.bandwidth())
