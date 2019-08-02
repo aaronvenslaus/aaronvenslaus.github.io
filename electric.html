@@ -139,13 +139,13 @@ div.tooltip {
             .padding(0.2);
 
         chart.append('g')
-            .attr('transform', `translate(0, ${height})`)
+            .attr('transform', `translate((${margin}, ${height})`)
             .call(d3.axisBottom(xScale));
 
         svg.append("text")             
             .attr("transform",
                     "translate(" + (width/2) + " ," + 
-                                (height + margin) + ")")
+                                (height + margin + 40) + ")")
             .style("text-anchor", "middle")
             .text("Manufacturer");
 
@@ -155,7 +155,7 @@ div.tooltip {
            .range([375, 0]);
 
         chart.append('g')
-             .attr('transform', `translate(0, ${margin})`)
+             .attr('transform', `translate(${margin}, ${margin})`)
              .call(d3.axisLeft(yScale));
 
         svg.append("text")
