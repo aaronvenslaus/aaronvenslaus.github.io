@@ -134,12 +134,12 @@ div.tooltip {
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`);
 
+        // x- axis
         const xScale = d3.scaleBand()
             .range([0, width])
             .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
             .padding(0.2);
 
-        // x- axis
         chart.append('g')
             .attr('transform', `translate(0, ${height})`)
             .call(d3.axisBottom(xScale));
@@ -163,7 +163,7 @@ div.tooltip {
         svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", 0 - (height / 2))
-            .attr("y", 0 - margin.left + 15)
+            .attr("y", 0 - margin + 15)
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("Miles per gallon");
