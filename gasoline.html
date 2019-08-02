@@ -124,7 +124,7 @@ div.tooltip {
         const svg = d3.select('svg');
 
         const margin = 25;
-        const width = 1400;
+        const width = 1600;
         const height = 400;
         
         d3.select("svg").attr("width", width + 4 * margin).attr("height", height + 4 * margin)
@@ -140,7 +140,8 @@ div.tooltip {
 
         chart.append('g')
             .attr('transform', `translate(${margin}, ${height})`)
-            .call(d3.axisBottom(xScale));
+            .call(d3.axisBottom(xScale))
+            .style("font-size", "8");
 
         svg.append("text")             
             .attr("transform",
