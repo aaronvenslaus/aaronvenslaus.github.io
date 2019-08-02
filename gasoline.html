@@ -183,7 +183,7 @@ div.tooltip {
             .attr('x', function(d) { return 25 + xScale(d.Make); })
             .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
             .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
-            .attr('width', xScale.bandwidth())
+            .attr('width', xScale.bandwidth() - 5)
             .attr('fill', 'green')
             .on("mouseover", function(d) {		
                 div.transition()		
