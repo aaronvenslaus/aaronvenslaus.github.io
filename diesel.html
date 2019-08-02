@@ -249,14 +249,7 @@ div.tooltip {
             .attr('transform', `translate(${margin}, ${height})`)
             .call(d3.axisBottom(xScale));
 
-        // y axis
-        const yScale = d3.scaleLinear()
-           .domain([0,50])
-           .range([375, 0]);
-
-        chart.append('g')
-             .attr('transform', `translate(${margin}, ${margin})`)
-             .call(d3.axisLeft(yScale));
+        
 
 
         // Define the div for the tooltip
@@ -267,6 +260,16 @@ div.tooltip {
 
         if(selectedMPG == "HighwayMPG" )
         {
+
+            // y axis
+            const yScale = d3.scaleLinear()
+            .domain([0,50])
+            .range([375, 0]);
+
+            chart.append('g')
+                .attr('transform', `translate(${margin}, ${margin})`)
+                .call(d3.axisLeft(yScale));
+            
             chart.selectAll()
                 .data(electricVehicles)
                 .enter()
@@ -291,27 +294,36 @@ div.tooltip {
         }
         else
         {
-                chart.selectAll()
-                .data(electricVehicles)
-                .enter()
-                .append('rect')
-                .attr('x', function(d) { return 25 + xScale(d.Make); })
-                .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
-                .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); }) 
-                .attr('width', xScale.bandwidth())
-                .attr('fill', 'green')
-                .on("mouseover", function(d) {		
-                    div.transition()		
-                        .duration(200)		
-                        .style("opacity", .9);		
-                    div.html("Average City MPG: " + d.AverageCityMPG + "<br/>")	
-                        .style("left", (d3.event.pageX) + "px")		
-                        .style("top", (d3.event.pageY - 28) + "px");	
-                })
-                .transition()
-                .duration(300)
-                .attr('y', function(d) { return 25 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 375 - yScale(d.AverageCityMPG); }) 
+            // y axis
+            const yScale = d3.scaleLinear()
+            .domain([0,35])
+            .range([375, 0]);
+
+            chart.append('g')
+                .attr('transform', `translate(${margin}, ${margin})`)
+                .call(d3.axisLeft(yScale));
+
+            chart.selectAll()
+            .data(electricVehicles)
+            .enter()
+            .append('rect')
+            .attr('x', function(d) { return 25 + xScale(d.Make); })
+            .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
+            .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); }) 
+            .attr('width', xScale.bandwidth())
+            .attr('fill', 'green')
+            .on("mouseover", function(d) {		
+                div.transition()		
+                    .duration(200)		
+                    .style("opacity", .9);		
+                div.html("Average City MPG: " + d.AverageCityMPG + "<br/>")	
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px");	
+            })
+            .transition()
+            .duration(300)
+            .attr('y', function(d) { return 25 + yScale(d.AverageCityMPG); })
+            .attr('height', function(d) { return 375 - yScale(d.AverageCityMPG); }) 
                 
         }
 
