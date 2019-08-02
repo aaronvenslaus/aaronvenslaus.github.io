@@ -164,7 +164,7 @@ div.tooltip {
         svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", 0 - (height / 2))
-            .attr("y", 0 - margin + 15)
+            .attr("y", 0 - margin.left + 15)
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("Miles per gallon");
@@ -283,7 +283,7 @@ div.tooltip {
                     div.transition()		
                         .duration(200)		
                         .style("opacity", .9);		
-                    div.html(" Highway Mileage: " + d.AverageHighwayMPG + "<br/>")	
+                    div.html(" Average Highway MPG: " + d.AverageHighwayMPG + "<br/>")	
                         .style("left", (d3.event.pageX) + "px")		
                         .style("top", (d3.event.pageY - 28) + "px");	
                 })
@@ -307,7 +307,7 @@ div.tooltip {
                     div.transition()		
                         .duration(200)		
                         .style("opacity", .9);		
-                    div.html(" Highway Mileage: " + d.AverageCityMPG + "<br/>")	
+                    div.html("Average City MPG: " + d.AverageCityMPG + "<br/>")	
                         .style("left", (d3.event.pageX) + "px")		
                         .style("top", (d3.event.pageY - 28) + "px");	
                 })
