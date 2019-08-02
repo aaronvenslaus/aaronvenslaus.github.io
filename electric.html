@@ -161,7 +161,7 @@ div.tooltip {
         svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", 0 - (height / 2))
-            .attr("y", 0 - margin.left + 15)
+            // .attr("y", 0 - margin.left + 15)
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("Miles per gallon");
@@ -175,23 +175,23 @@ div.tooltip {
         //     .attr("class", "tooltip")				
         //     .style("opacity", 0);
 
-        // chart.selectAll()
-        //     .data(electricVehicles)
-        //     .enter()
-        //     .append('rect')
-        //     .attr('x', function(d) { return xScale(d.Make); })
-        //     .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-        //     .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
-        //     .attr('width', xScale.bandwidth())
-        //     .attr('fill', 'green')
-        //     .on("mouseover", function(d) {		
-        //         div.transition()		
-        //             .duration(200)		
-        //             .style("opacity", .9);		
-        //         div.html(" Highway Mileage: " + d.AverageHighwayMPG + "<br/>")	
-        //             .style("left", (d3.event.pageX) + "px")		
-        //             .style("top", (d3.event.pageY - 28) + "px");	
-        //         })	
+        chart.selectAll()
+            .data(electricVehicles)
+            .enter()
+            .append('rect')
+            .attr('x', function(d) { return xScale(d.Make); })
+            .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
+            .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); }) // 125 - yScale(
+            .attr('width', xScale.bandwidth())
+            .attr('fill', 'green')
+            .on("mouseover", function(d) {		
+                div.transition()		
+                    .duration(200)		
+                    .style("opacity", .9);		
+                div.html(" Highway Mileage: " + d.AverageHighwayMPG + "<br/>")	
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px");	
+                })	
         
         
         }
