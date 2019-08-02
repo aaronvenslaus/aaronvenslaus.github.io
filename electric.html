@@ -228,9 +228,9 @@ div.tooltip {
 
         console.log(selectedMPG);
 
-        const margin = 50;
+        const margin = 25;
         const width = 750;
-        const height = 500 ;
+        const height = 400;
 
         var svg = d3.select('svg');
         d3.select('g').remove();
@@ -238,26 +238,26 @@ div.tooltip {
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`);
 
-        // var chart = d3.select('g');
-
-        
-
+      
+        // x- axis
         const xScale = d3.scaleBand()
             .range([0, width])
             .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
             .padding(0.2);
 
-        const yScale = d3.scaleLinear()
-           .domain([0,150])
-           .range([450, 0]);
-
         chart.append('g')
-            .attr('transform', `translate(0, ${height})`)
+            .attr('transform', `translate(${margin}, ${height})`)
             .call(d3.axisBottom(xScale));
 
+        // y axis
+        const yScale = d3.scaleLinear()
+           .domain([0,150])
+           .range([375, 0]);
+
         chart.append('g')
-             .attr('transform', `translate(0, ${margin})`)
+             .attr('transform', `translate(${margin}, ${margin})`)
              .call(d3.axisLeft(yScale));
+
 
         // Define the div for the tooltip
         var div = d3.select("#tooltip")	
@@ -271,9 +271,9 @@ div.tooltip {
                 .data(electricVehicles)
                 .enter()
                 .append('rect')
-                .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); })
+                .attr('x', function(d) { return 25 + xScale(d.Make); })
+                .attr('y', function(d) { return 25 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 375 - yScale(d.AverageCityMPG); })
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
                 .on("mouseover", function(d) {		
@@ -286,8 +286,8 @@ div.tooltip {
                 })
                 .transition()
                 .duration(300)
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); })
+                .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); })
         }
         else
         {
@@ -295,9 +295,9 @@ div.tooltip {
                 .data(electricVehicles)
                 .enter()
                 .append('rect')
-                .attr('x', function(d) { return xScale(d.Make); })
-                .attr('y', function(d) { return 50 + yScale(d.AverageHighwayMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageHighwayMPG); }) 
+                .attr('x', function(d) { return 25 + xScale(d.Make); })
+                .attr('y', function(d) { return 25 + yScale(d.AverageHighwayMPG); })
+                .attr('height', function(d) { return 375 - yScale(d.AverageHighwayMPG); }) 
                 .attr('width', xScale.bandwidth())
                 .attr('fill', 'green')
                 .on("mouseover", function(d) {		
@@ -310,8 +310,8 @@ div.tooltip {
                 })
                 .transition()
                 .duration(300)
-                .attr('y', function(d) { return 50 + yScale(d.AverageCityMPG); })
-                .attr('height', function(d) { return 450 - yScale(d.AverageCityMPG); }) 
+                .attr('y', function(d) { return 25 + yScale(d.AverageCityMPG); })
+                .attr('height', function(d) { return 375 - yScale(d.AverageCityMPG); }) 
                 
         }
 
