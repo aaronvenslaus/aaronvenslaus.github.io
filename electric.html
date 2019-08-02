@@ -83,11 +83,10 @@ div.tooltip {
         </div>        
         <br/>
 
-        <div >
-            <p style="font-size:12px; padding-left:50px;"><u>Choose desired miles per gallon:</u></p>        
+        <div>
+            <p style="font-size:14px; padding-left:50px;"><u>Choose desired miles per gallon:</u></p>        
         </div>
 
-        <br/>
         <div style="padding-left:50px;">
             <form>
                 <input type="radio" name="MPG" id="HighwayMPG" value="HighwayMPG" checked> Average Highway MPG<br>
@@ -99,7 +98,7 @@ div.tooltip {
 
         <div id="tooltip"></div>
 
-        <svg></svg>
+        <svg style="padding-left:50px;"></svg>
 
 <script>
     async function init() {
@@ -124,11 +123,11 @@ div.tooltip {
 
         const svg = d3.select('svg');
 
-        const margin = 50;
+        const margin = 25;
         const width = 750;
-        const height = 500;
+        const height = 400;
         
-        d3.select("svg").attr("width", width + 2 * margin).attr("height", height + 2 * margin)
+        d3.select("svg").attr("width", width).attr("height", height + 2 * margin)
 
         const chart = svg.append('g')
             .attr('transform', `translate(${margin}, ${margin})`);
