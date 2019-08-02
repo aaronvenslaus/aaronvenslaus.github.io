@@ -99,7 +99,8 @@ div.tooltip {
 
         </div>
 
-        
+        <div id="tooltip"></div>
+
         <svg></svg>
 
 <script>
@@ -163,7 +164,7 @@ div.tooltip {
         svg.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", 0 - (height / 2))
-            .attr("y", 0 - margin + 15)
+            .attr("y", 0 - margin)
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("Miles per gallon");
@@ -173,7 +174,7 @@ div.tooltip {
         console.log(xScale('BMW'))
 
         // Define the div for the tooltip
-        var div = d3.select("body").append("div")	
+        var div = d3.select("#tooltip")	
             .attr("class", "tooltip")				
             .style("opacity", 0);
 
