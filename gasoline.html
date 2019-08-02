@@ -95,11 +95,11 @@ div.tooltip {
                 <div>
                     <p style="font-size:14px;"><u>Number of cyclinders:</u></p>   
                     <div>
-                        <input type="radio" name="numCyclinders" id="2" value="2" checked>2
-                        <input type="radio" name="numCyclinders" id="4" value="4"> 4
-                        <input type="radio" name="numCyclinders" id="6" value="6"> 6
-                        <input type="radio" name="numCyclinders" id="8" value="8"> 8
-                        <input type="radio" name="numCyclinders" id="10" value="10"> 10
+                        <input type="radio" name="twoCyclinders" id="twoCyclinders" value="2" checked>2
+                        <input type="radio" name="numCyclinders" id="fourCyclinders" value="4"> 4
+                        <input type="radio" name="numCyclinders" id="sixCyclinders" value="6"> 6
+                        <input type="radio" name="numCyclinders" id="eightCyclinders" value="8"> 8
+                        <input type="radio" name="numCyclinders" id="tenCyclinders" value="10"> 10
                     </div>     
                 </div>
             </br>
@@ -124,7 +124,7 @@ div.tooltip {
         {
             let obj = data[idx];
 
-            if(obj.Fuel == "Gasoline")
+            if(obj.Fuel == "Gasoline" && obj.EngineCylinders == 2)
             {
                 electricVehicles.push(obj);
             }
@@ -215,20 +215,6 @@ div.tooltip {
 
         console.log(data);
 
-        var electricVehicles = [];
-
-        for( let idx = 0; idx < data.length; idx++)
-        {
-            let obj = data[idx];
-
-            if(obj.Fuel == "Gasoline")
-            {
-                electricVehicles.push(obj);
-            }
-        }
-
-        console.log(electricVehicles);
-
         var selectedMPG;
         if (document.getElementById('HighwayMPG').checked) {
             selectedMPG = document.getElementById('HighwayMPG').value;
@@ -238,6 +224,43 @@ div.tooltip {
             selectedMPG = document.getElementById('CityMPG').value;
         }
 
+
+        var numCylinders;
+        if (document.getElementById('twoCyclinders').checked) {
+            numCylinders = 2;
+        }
+
+        if (document.getElementById('fourCyclinders').checked) {
+            numCylinders = 4;
+        }
+
+        if (document.getElementById('sixCyclinders').checked) {
+            numCylinders = 6;
+        }
+
+        if (document.getElementById('eightCyclinders').checked) {
+            numCylinders = 8;
+        }
+
+        if (document.getElementById('tenCyclinders').checked) {
+            numCylinders = 8;
+        }
+
+        var electricVehicles = [];
+
+        for( let idx = 0; idx < data.length; idx++)
+        {
+            let obj = data[idx];
+
+            if(obj.Fuel == "Gasoline"  && obj.EngineCylinders == numCylinders)
+            {
+                electricVehicles.push(obj);
+            }
+        }
+
+        console.log(electricVehicles);
+
+        
         console.log(selectedMPG);
 
         const margin = 25;
