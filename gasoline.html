@@ -230,7 +230,7 @@ div.tooltip {
         console.log(selectedMPG);
 
         const margin = 25;
-        const width = 750;
+        const width = 1600;
         const height = 400;
 
         var svg = d3.select('svg');
@@ -244,11 +244,12 @@ div.tooltip {
         const xScale = d3.scaleBand()
             .range([0, width])
             .domain(electricVehicles.map((electricVehicles) => electricVehicles.Make))
-            .padding(0.2);
+            .padding(0.1);
 
         chart.append('g')
             .attr('transform', `translate(${margin}, ${height})`)
-            .call(d3.axisBottom(xScale));
+            .call(d3.axisBottom(xScale))
+            .style("font-size", "8");
 
         // y axis
         const yScale = d3.scaleLinear()
